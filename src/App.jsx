@@ -17,15 +17,23 @@ function App() {
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8-0QNV5Sv62CALuJz1A33-17bgRBG8Ucn5w&usqp=CAU'
   ];
 
-  const [currentImage, setCurrentImage] = useState(images[0]);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImage(currentImage === 0 ? images.length - 1 : currentImage - 1)
+  }
+
+  const prevImage = () => {
+    setCurrentImage(currentImage === images.length - 1 ? 0 : currentImage + 1);
+  }
   
   return (
     <div className={styles.app}>
       <h1 className={styles.header} >The Strawhats</h1>
       <div className={styles.gallery}>
-        <button>◀</button>
-        <img src={currentImage} alt="" />
-        <button>▶</button>
+        <button onClick={nextImage} >◀</button>
+        <img src={images[currentImage]} alt="" />
+        <button onClick={prevImage} >▶</button>
       </div>
     </div>
   );

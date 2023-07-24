@@ -32,7 +32,10 @@ function App() {
       <h1 className={styles.header} >The Strawhats</h1>
       <div className={styles.gallery}>
         <button onClick={nextImage} >◀</button>
-        <img src={images[currentImage]} alt="" />
+        {images.map((image, index) => 
+        currentImage === index && (
+          <img src={images[currentImage]} key={image} alt="strawhats" />
+        ))}
         <button onClick={prevImage} >▶</button>
       </div>
     </div>
